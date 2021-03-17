@@ -38,8 +38,12 @@ def process_exception(function):
     def wrapper(*args, **kwargs):
         try:
             return function(*args, **kwargs)
-        except (WorkFlowException, StepNotFoundException, InsufficientFundsError, UnauthorizedException) as we:
+        except UnauthorizedException as e:
+            raise HTTPException(status_code=401, detail=e.message)
+        except WorkFlowException as we:
             raise HTTPException(status_code=500, detail=we.message)
+        except (StepNotFoundException, InsufficientFundsError) as e:
+            raise HTTPException(status_code=409 , detail=e.message)
         except PyMongoError as e:
             raise HTTPException(status_code=500, detail="Unexpected error connecting to database.")
     return wrapper

@@ -9,7 +9,7 @@ Framework: **FastApi**
 
 2. Copy the default environment in the patch **local_env** to **.env**:
    
-        cp /path_to_proyect/local_env /path_to_project.env
+        cp /path_to_proyect/local_env.env /path_to_project.env
 
 3. Start the server using the command:
 
