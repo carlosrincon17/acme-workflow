@@ -16,9 +16,18 @@ class APISettings(BaseSettings):
         env_prefix = "API_"
 
 
+class ThirdPartySettings(BaseSettings):
+    trm_api: str
+
+    class Config(BaseSettings.Config):
+        env_prefix = "THIRD_PARTY_"
+
+
 class MongoSettings(BaseSettings):
     uri: str
     database: str
+    username: str
+    password: str
 
     class Config(BaseSettings.Config):
         env_prefix = "MONGO_"
@@ -26,3 +35,4 @@ class MongoSettings(BaseSettings):
 
 api_settings = APISettings()
 mongo_settings = MongoSettings()
+third_party_settings = ThirdPartySettings()

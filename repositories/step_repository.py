@@ -6,12 +6,12 @@ from repositories.base_repository import BaseRepository
 
 class StepRepository(BaseRepository):
 
-    __collection__ = 'steps'
+    __collection__ = "steps"
 
     @classmethod
     def create(cls, step: Step) -> Step:
         result = cls.get_collection().insert_one(step.dict())
-        return cls.get_step({'_id': ObjectId(result.inserted_id)})
+        return cls.get_step({"_id": ObjectId(result.inserted_id)})
 
     @classmethod
     def get_step(cls, filters) -> Step:

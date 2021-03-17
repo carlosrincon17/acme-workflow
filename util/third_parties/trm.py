@@ -1,12 +1,14 @@
 import requests
 
+from settings import third_party_settings
+
 
 class TRMHelper:
 
     @staticmethod
     def convert_usd_to_cop(usd_money: float) -> float:
 
-        current_trm = 'https://trm-colombia.vercel.app/?date=2021-03-17'
+        current_trm = third_party_settings.trm_api
         response = requests.get(current_trm)
-        data = response.json().get('data')
-        return data['value'] * usd_money
+        data = response.json().get('USDCOL')
+        return data['ratetrm'] * usd_money

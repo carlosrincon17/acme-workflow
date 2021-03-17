@@ -12,4 +12,4 @@ class AccountApi(Resource):
         HTTPStatus.CREATED.value
     )
     def post(self, account_create: AccountCreate):
-        AccountController.create_account(account_create=account_create)
+        return AccountController.create_account(account_create=account_create)
