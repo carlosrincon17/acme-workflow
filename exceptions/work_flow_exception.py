@@ -23,7 +23,7 @@ class ActionNotFoundException(Exception):
 class UnauthorizedException(Exception):
 
     def __init__(self):
-        self.message = "The user or pin is wrong, please verify then and try again."
+        self.message = "The user or pin is wrong, please verify them and try again."
         super().__init__(self, self.message)
 
 

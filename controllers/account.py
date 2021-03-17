@@ -1,6 +1,6 @@
 from exceptions.work_flow_exception import (
     ActionNotFoundException,
-    InsufficientFundsError,
+    InsufficientFundsError, UnauthorizedException,
 )
 from models.schemas import AccountCreate, Account
 
@@ -27,6 +27,8 @@ class AccountController:
                 "Is Valid" if account else "is not valid"
             )
         )
+        if not account:
+            raise UnauthorizedException
         return dict(is_valid=account is not None or False)
 
     @classmethod
