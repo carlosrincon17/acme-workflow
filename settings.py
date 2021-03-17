@@ -7,7 +7,7 @@ class BaseSettings(pydantic.BaseSettings):
 
 
 class APISettings(BaseSettings):
-    title: str = "Workflow API"
+    title: str = "ACME API"
     host: str = "0.0.0.0"
     port: int = 8000
     log_level: str = "INFO"
@@ -17,8 +17,8 @@ class APISettings(BaseSettings):
 
 
 class MongoSettings(BaseSettings):
-    uri: str = "mongodb+srv://playvox:playvox@cluster0.oyz87.mongodb.net"
-    database: str = "playvox"
+    uri: str
+    database: str
 
     class Config(BaseSettings.Config):
         env_prefix = "MONGO_"
